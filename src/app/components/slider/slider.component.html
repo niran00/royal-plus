@@ -1,0 +1,50 @@
+
+<div class="slider">
+    <ng-container  *ngFor="let item of items; let i=index"  >
+        <div class="slide text-light" *ngIf="i == currentSlideIndex"  @sliderFade >
+            <div class="slide-bg">
+              <img class="slide-bg-image" [src]="'https://image.tmdb.org/t/p/original/' + item.backdrop_path" alt="" />
+            </div>
+            <div class="slide-pane">
+              <h2 class="name">{{item.title}} - {{i}}</h2>
+              <div class="meta">
+                <div class="info">
+                  <span class="rating">
+                    <span class="app-icon">star</span><span class="rating-value">{{item.vote_average}} </span
+                    ><span>/10</span>
+                  </span>
+                  <span>{{item.vote_count}}</span>
+                  <span>{{item.release_date | date: 'yyyy'}}</span>
+                </div>
+              </div>
+              <div class="desc mt-6">
+                 {{item.overview}}
+              </div>
+            </div>
+          </div>
+
+    </ng-container>   
+</div>
+  
+   
+
+   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <ng-container *ngFor="let item of items; let i=index" >
+            <div class="carousel-item active" *ngIf="i == 0" >
+                <img class="d-block w-100" [src]="'https://image.tmdb.org/t/p/original/' + item.backdrop_path" alt="" />
+            </div>
+            <div class="carousel-item " *ngIf="i > 0" >
+                <img class="d-block w-100" [src]="'https://image.tmdb.org/t/p/original/' + item.backdrop_path" alt="" />
+            </div>
+        </ng-container>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
